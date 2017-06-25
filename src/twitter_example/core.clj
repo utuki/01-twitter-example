@@ -50,9 +50,12 @@
 (defn generate-sentence []
   (let [template (rand-nth templates)
         party (rand-nth parties)
-        blank (rand-nth blanks)
-        template-with-party (s/replace template "__p" party)]
-      (s/replace template-with-party "___" blank)))
+        blank (rand-nth blanks)]
+      (-> template
+          (s/replace "__p" party)
+          (s/replace "___" blank))))
+        ;template-with-party (s/replace template "__p" party)]
+      ;(s/replace template-with-party "___" blank)))
 
 
 ; Tweets are limited to 140 characters. We might randomly generate a sentence
